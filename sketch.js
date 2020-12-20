@@ -6,6 +6,7 @@ function setup() {
 	createCanvas(800, 800);
 
 	birdy = createSprite(50,400,20,20);
+	birdy.shapeColor = "yellow";
 }
 
 
