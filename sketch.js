@@ -1,14 +1,18 @@
 var birdy;
 var obs = [];
 var gameState = 0;
+var goldenTowerNum,curTower = 0;
+var goldenTower;
 
 function setup() {
 	createCanvas(800, 800);
 
 	birdy = createSprite(50,400,20,20);
 	birdy.shapeColor = "yellow";
-}
 
+	//goldenTower = round(random(20,50));
+	goldenTowerNum = 1;
+}
 
 function draw() {
 	background(0,255,255);
@@ -26,12 +30,27 @@ function draw() {
 		}
 	}
 	else if(gameState == 1){
-
 		birdy.velocityX = 0;
 		birdy.velocityY = 10;
 	}
 	else if(gameState == 2){
-		// Game won
+		for(var i = 0;i<obs.length;i++){
+			obs[i].destroy();
+		}
+		if(goldenTower == undefined){
+			goldenTower = createSprite(birdy.x + 350,600,50,400);
+			goldenTower.shapeColor = "gold";
+		}
+
+		birdy.velocityX = 0;
+		birdy.velocityY = 0;
+		birdy.x = goldenTower.x;
+		birdy.y = goldenTower.y - 210;
+
+		fill("black");
+		textAlign(CENTER);
+		textSize(50);
+		text("YOU WON!!!",goldenTower.x,goldenTower.y - 300);
 	}
 	drawSprites();
 }
@@ -48,7 +67,9 @@ function Move(){
 }
 
 function createObstacles(){
-	if(frameCount % 100 == 0){
+	
+	if(frameCount % 100 == 0 && goldenTowerNum!=curTower){
+		curTower++;
 		var obsY = random(0,250);
 
 		var obsUp = createSprite(birdy.x + 750,obsY,50,500);
@@ -60,5 +81,7 @@ function createObstacles(){
 
 		obs.push(obsUp);
 		obs.push(obsDown);
+	}else if(goldenTowerNum == curTower){
+		gameState = 2;
 	}
 }
