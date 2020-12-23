@@ -4,11 +4,16 @@ var gameState = 0;
 var goldenTowerNum,curTower = 0;
 var goldenTower;
 
+function preload(){
+	birdImg = loadImage("Img/birdy.png");
+}
+
 function setup() {
 	createCanvas(800, 800);
 
 	birdy = createSprite(50,400,20,20);
 	birdy.shapeColor = "yellow";
+	birdy.addImage(birdImg);
 
 	goldenTowerNum = round(random(20,50));
 }
