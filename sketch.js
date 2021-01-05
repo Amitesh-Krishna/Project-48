@@ -5,7 +5,7 @@ var goldenTowerNum,curTower = 0;
 var goldenTower;
 
 function preload(){
-	birdImg = loadImage("Img/birdy.png");
+	birdImg = loadImage("Img/Birdy.png");
 }
 
 function setup() {
