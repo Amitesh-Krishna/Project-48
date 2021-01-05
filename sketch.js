@@ -79,7 +79,7 @@ function createObstacles(){
 		var obsUp = createSprite(birdy.x + 750,obsY,50,500);
 		obsUp.lifetime = 400;
 		obsUp.shapeColor = "lime";
-		var obsDown = createSprite(birdy.x + 750,obsY + 650,50,500);
+		var obsDown = createSprite(birdy.x + 750,obsY + 700,50,500);
 		obsDown.lifetime = 400;
 		obsDown.shapeColor = "lime";
 
